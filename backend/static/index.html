@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FinAlly</title>
+    <link rel="stylesheet" href="/assets/app.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark">FA</span>
+          <div>
+            <h1>FinAlly</h1>
+            <p>AI Trading Workstation</p>
+          </div>
+        </div>
+        <div class="account-strip">
+          <div>
+            <span>Total Value</span>
+            <strong id="totalValue">$0.00</strong>
+          </div>
+          <div>
+            <span>Cash</span>
+            <strong id="cashBalance">$0.00</strong>
+          </div>
+          <div>
+            <span>P&amp;L</span>
+            <strong id="portfolioPl">$0.00</strong>
+          </div>
+          <div class="connection">
+            <span id="connectionDot" class="dot dot-yellow"></span>
+            <strong id="connectionText">Connecting</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="terminal-grid">
+        <section class="panel watchlist-panel">
+          <div class="panel-head">
+            <h2>Watchlist</h2>
+            <form id="watchlistForm" class="inline-form">
+              <input id="watchTicker" name="ticker" autocomplete="off" placeholder="Ticker" />
+              <button type="submit">Add</button>
+            </form>
+          </div>
+          <div id="watchlist" class="watchlist"></div>
+        </section>
+
+        <section class="panel chart-panel">
+          <div class="panel-head">
+            <div>
+              <h2 id="selectedTicker">AAPL</h2>
+              <p id="selectedMeta">Live price action</p>
+            </div>
+            <div class="metric-pill" id="selectedPrice">$0.00</div>
+          </div>
+          <canvas id="priceChart" class="chart-canvas"></canvas>
+        </section>
+
+        <section class="panel trade-panel">
+          <div class="panel-head">
+            <h2>Trade</h2>
+          </div>
+          <form id="tradeForm" class="trade-form">
+            <label>
+              <span>Ticker</span>
+              <input id="tradeTicker" name="ticker" value="AAPL" autocomplete="off" />
+            </label>
+            <label>
+              <span>Quantity</span>
+              <input id="tradeQuantity" name="quantity" type="number" value="1" min="0.0001" step="0.0001" />
+            </label>
+            <div class="trade-actions">
+              <button type="submit" data-side="buy" class="buy">Buy</button>
+              <button type="submit" data-side="sell" class="sell">Sell</button>
+            </div>
+          </form>
+          <div id="tradeStatus" class="status-line"></div>
+        </section>
+
+        <section class="panel heatmap-panel">
+          <div class="panel-head">
+            <h2>Portfolio Heatmap</h2>
+          </div>
+          <div id="heatmap" class="heatmap"></div>
+        </section>
+
+        <section class="panel positions-panel">
+          <div class="panel-head">
+            <h2>Positions</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ticker</th>
+                  <th>Qty</th>
+                  <th>Avg</th>
+                  <th>Last</th>
+                  <th>Value</th>
+                  <th>P&amp;L</th>
+                </tr>
+              </thead>
+              <tbody id="positionsTable"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel pnl-panel">
+          <div class="panel-head">
+            <h2>P&amp;L History</h2>
+          </div>
+          <canvas id="pnlChart" class="small-chart"></canvas>
+        </section>
+
+        <section class="panel chat-panel">
+          <div class="panel-head">
+            <h2>AI Assistant</h2>
+          </div>
+          <div id="chatMessages" class="chat-messages"></div>
+          <form id="chatForm" class="chat-form">
+            <input id="chatInput" autocomplete="off" placeholder="Ask FinAlly" />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/assets/app.js" defer></script>
+  </body>
+</html>

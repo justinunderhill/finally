@@ -1,0 +1,14 @@
+.git
+.github
+.claude
+.env
+db
+backend/.venv
+backend/.uv-cache
+backend/.pytest_cache
+backend/.ruff_cache
+backend/**/__pycache__
+backend/**/*.pyc
+backend/*.log
+backend/.runtime
+planning/archive
