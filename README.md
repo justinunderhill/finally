@@ -37,6 +37,20 @@ docker run -v finally-data:/app/db -p 8000:8000 --env-file .env finally
 # Open http://localhost:8000
 ```
 
+## Deploying to Vercel
+
+This repo includes a root `index.py` entrypoint and root `requirements.txt` so Vercel can deploy the FastAPI app from the repository root.
+
+1. Import the repository in Vercel.
+2. Keep the project root as the repository root, not `backend/`.
+3. Leave the build command empty.
+4. Add optional environment variables:
+   - `OPENROUTER_API_KEY` for live AI chat responses
+   - `MASSIVE_API_KEY` for real market data
+   - `LLM_MOCK=true` for deterministic demo responses
+
+On Vercel, SQLite defaults to `/tmp/finally.db`. That keeps the demo writable in serverless runtime, but the data is ephemeral across cold starts and redeploys.
+
 ## Environment Variables
 
 | Variable | Required | Description |

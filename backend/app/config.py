@@ -8,7 +8,11 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
 BACKEND_ROOT = Path(__file__).resolve().parents[1]
 STATIC_ROOT = BACKEND_ROOT / "static"
-DB_PATH = Path(os.environ.get("FINALLY_DB_PATH", PROJECT_ROOT / "db" / "finally.db"))
+
+default_db_path = (
+    Path("/tmp/finally.db") if os.environ.get("VERCEL") else PROJECT_ROOT / "db" / "finally.db"
+)
+DB_PATH = Path(os.environ.get("FINALLY_DB_PATH", default_db_path))
 
 
 def load_env() -> None:
